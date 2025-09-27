@@ -1,20 +1,8 @@
-# BetterGovPH - Healthcare Providers - API
-
----
+# BetterGovPH - Healthcare Providers API
 
 ## Features
 
-- 🔒 **Centralized Authentication** — One account to access multiple services.
-
-- 👤 **User Identity Verification** — Built-in support for strong identity validation.
-
-- ⚡ **Seamless Integration** — Easy to integrate with government and third-party applications.
-
-- 📱 **Multi-Platform Support** — Works across web and mobile applications.
-
-- 🛡️ **Security by Design** — Follows industry standards for encryption and session handling.
-
----
+- TBD
 
 ## Requirements
 
@@ -24,37 +12,26 @@
 
 - [Nest](https://github.com/nestjs/nest)
 
----
-
 ## Getting Started
 
 ### 1. Clone the repository
 
 ```bash
-
 gh repo clone bettergovph/healthcare-providers-api
-
 cd healthcare-providers-api
-
 ```
 
 ### 2. Install dependencies
 
-```
-
+```bash
 pnpm install
-
 ```
 
 ### 3. Run the development server
 
-```
-
+```bash
 pnpm start:dev
-
 ```
-
----
 
 ## Scripts
 
@@ -65,7 +42,7 @@ pnpm start:dev
 
 ## Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request following the project’s guidelines.
+Contributions are welcome! Please open an issue or submit a pull request following the project’s [guidelines](./CONTRIBUTING.md).
 
 ## License
 

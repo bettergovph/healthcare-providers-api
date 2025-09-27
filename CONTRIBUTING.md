@@ -27,6 +27,7 @@ POSTGRES_PORT=5432
 - Ensure your branch is up to date with `main`.
 - Open a pull request with a clear description of your changes.
 - Reference related issues in your PR description.
+- Ensure all security findings are addressed.
 - Address review comments promptly.
 
 ## Issue Reporting

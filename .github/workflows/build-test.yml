@@ -1,0 +1,33 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize]
+
+jobs:
+  build_image:
+    name: Build image
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Todo: reorg pipeline such that build and push should not proceed when security scan and tests fail
+      - name: Build and push the image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          push: false
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/healthcare-providers-api:${{github.sha}}
+            ghcr.io/${{ github.repository_owner }}/healthcare-providers-api:latest
+
+# Add unit tests here
+
+# Add linting tests here

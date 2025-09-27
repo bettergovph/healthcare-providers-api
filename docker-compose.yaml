@@ -1,0 +1,17 @@
+services:
+  healthcareapi-db:
+    image: postgres:17
+    container_name: healthcareapi-db
+    env_file: .env
+    volumes:
+      - healthcareapi_db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - healthcareapi-network
+volumes:
+  healthcareapi_db_data:
+    name: healthcareapi_db_data
+networks:
+  healthcareapi-network:
+    driver: bridge

@@ -10,8 +10,11 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  security_scan:
+
+  vulnerability_scan:
     runs-on: ubuntu-latest
+    permissions:
+      security-events: write
 
     steps:
 
@@ -34,3 +37,35 @@ jobs:
         uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: test
+          args: --sarif-file-output=snyk.sarif
+        continue-on-error: true
+
+      - name: Upload result to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: snyk.sarif
+
+  sast_scan:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+
+    steps:
+
+      - uses: actions/checkout@master
+
+      - name: Run SAST using Snyk
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: code test
+          args: --sarif-file-output=snyk.sarif
+        continue-on-error: true
+
+      - name: Upload result to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: snyk.sarif
